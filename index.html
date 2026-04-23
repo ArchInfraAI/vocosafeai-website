@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VocoSafe AI &trade; - Select Your Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .fork-container {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            align-items: stretch;
+            margin-top: 4rem;
+            flex-wrap: wrap;
+        }
+        .fork-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 3rem;
+            width: 400px;
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .icon-container {
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        .fork-card:hover {
+            transform: translateY(-10px);
+            border-color: #0078d4;
+            background: rgba(0, 120, 212, 0.05);
+        }
+        .platform-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .platform-label {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #0078d4;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        .btn-fork {
+            display: inline-block;
+            margin-top: auto;
+            padding: 0.8rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            background: #0078d4;
+            color: white;
+        }
+        .lang-switcher {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #ccc;
+            border-radius: 8px;
+            padding: 4px 8px;
+            font-size: 13px;
+            cursor: pointer;
+            margin-right: 15px;
+            outline: none;
+        }
+        .lang-switcher:hover { border-color: #0078d4; }
+        .lang-switcher option { background: #1a1a1a; color: #fff; }
+    </style>
+    <script>
+        function changeLang(val) {
+            console.log("Language changed to: " + val);
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">VocoSafe AI &trade;</div>
+            <nav>
+                <select id="lang-select-header" class="lang-switcher" onchange="changeLang(this.value)">
+                    <option value="en">en English</option>
+                    <option value="ar">ar العربية</option>
+                    <option value="de">de Deutsch</option>
+                    <option value="es">es Español</option>
+                    <option value="fr">fr Français</option>
+                    <option value="hi">hi हिन्दी</option>
+                    <option value="id">id Bahasa Indonesia</option>
+                    <option value="it">it Italiano</option>
+                    <option value="jp">jp 日本語</option>
+                    <option value="ko">ko 한국어</option>
+                    <option value="nl">nl Nederlands</option>
+                    <option value="pl">pl Polski</option>
+                    <option value="pt">pt Português</option>
+                    <option value="ru">ru Русский</option>
+                    <option value="tr">tr Türkçe</option>
+                    <option value="uk">uk Українська</option>
+                    <option value="vi">vi Tiếng Việt</option>
+                    <option value="zh">zh 中文</option>
+                </select>
+                <a href="support.html">Support</a>
+                <a href="privacy.html">Privacy</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Choose Your Platform</h1>
+            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 2rem auto; line-height: 1.6;">
+                Turn your speech into text instantly - no internet, no cloud, no data sharing. The professional choice for secure, high-accuracy transcription.
+            </p>
+            <p>Select your operating system to download the 100% offline, private dictation assistant.</p>
+            
+                        <div class="fork-container">
+                <a href="mac.html" class="fork-card">
+                    <div class="platform-label">macOS</div>
+                    <div class="icon-container">
+                        <span class="platform-icon" style="margin-bottom: 0;"></span>
+                    </div>
+                    <h2>VocoSafe AI for Mac</h2>
+                    <p>Optimized for Apple Silicon (M1-M5). Available now on the Mac App Store.</p>
+                    <span class="btn-fork">Get for macOS</span>
+                </a>
+                
+                <a href="windows.html" class="fork-card">
+                    <div class="platform-label">Windows</div>
+                    <div class="icon-container">
+                        <svg viewBox="0 0 100 100" width="4.5rem" height="4.5rem" style="margin: 0; display: block;">
+                            <rect x="0" y="0" width="47" height="47" fill="#00a4ef"/>
+                            <rect x="53" y="0" width="47" height="47" fill="#00a4ef"/>
+                            <rect x="0" y="53" width="47" height="47" fill="#00a4ef"/>
+                            <rect x="53" y="53" width="47" height="47" fill="#00a4ef"/>
+                        </svg>
+                    </div>
+                    <h2>VocoSafe AI for Windows</h2>
+                    <p>Powered by NVIDIA CUDA. High-performance offline AI for Windows 10/11.</p>
+                    <span class="btn-fork" style="background: #555;">Coming Soon</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <nav style="margin-bottom: 1.5rem;">
+                <select id="lang-select-footer" class="lang-switcher" onchange="changeLang(this.value)">
+                    <option value="en">en English</option>
+                    <option value="ar">ar العربية</option>
+                    <option value="de">de Deutsch</option>
+                    <option value="es">es Español</option>
+                    <option value="fr">fr Français</option>
+                    <option value="hi">hi हिन्दी</option>
+                    <option value="id">id Bahasa Indonesia</option>
+                    <option value="it">it Italiano</option>
+                    <option value="jp">jp 日本語</option>
+                    <option value="ko">ko 한국어</option>
+                    <option value="nl">nl Nederlands</option>
+                    <option value="pl">pl Polski</option>
+                    <option value="pt">pt Português</option>
+                    <option value="ru">ru Русский</option>
+                    <option value="tr">tr Türkçe</option>
+                    <option value="uk">uk Українська</option>
+                    <option value="vi">vi Tiếng Việt</option>
+                    <option value="zh">zh 中文</option>
+                </select>
+                <a href="https://vocosafeai.com">vocosafeai.com</a> | 
+                <a href="changelog.html">Changelog</a> | <a href="support.html">Support</a> | 
+                <a href="terms.html">Terms of Use</a> | <a href="privacy.html">Privacy Policy</a>
+            </nav>
+            <p>&copy; 2026 Oleksiy Krotov. VocoSafe AI &trade; is a trademark of Oleksiy Krotov. All rights reserved.</p>
+            <p class="small-text" style="opacity: 0.5; margin-top: 10px;">
+                Apple, the Apple logo, and macOS are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc.<br>
+                Windows is a trademark of the Microsoft group of companies.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
