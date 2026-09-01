@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changelog - VocoSafe&nbsp;AI</title>
+    <meta name="description" content="Every released version of VocoSafe AI for Mac, what changed in each one, and when it shipped.">
+    <link rel="canonical" href="https://vocosafeai.com/changelog.html">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" href="images/icon-180.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="VocoSafe AI">
+    <meta property="og:url" content="https://vocosafeai.com/changelog.html">
+    <meta property="og:title" content="Changelog - VocoSafe AI">
+    <meta property="og:description" content="Every released version of VocoSafe AI for Mac, what changed in each one, and when it shipped.">
+    <meta property="og:image" content="https://vocosafeai.com/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Changelog - VocoSafe AI">
+    <meta name="twitter:description" content="Every released version of VocoSafe AI for Mac, what changed in each one, and when it shipped.">
+    <meta name="twitter:image" content="https://vocosafeai.com/images/og-image.png">
+    <script>
+        // Runs before the first paint. As a file this would apply after
+        // it, and every dark-mode visitor would get a white flash.
+        (function () {
+            var forced = /[?&]theme=(light|dark)/.exec(location.search);
+            if (forced) {
+                document.documentElement.setAttribute("data-theme", forced[1]);
+                return;
+            }
+            try {
+                var saved = localStorage.getItem("vs-theme");
+                if (saved === "light" || saved === "dark") {
+                    document.documentElement.setAttribute("data-theme", saved);
+                }
+            } catch (e) {
+                // Private browsing blocks storage. Fall through to the system preference.
+            }
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="i18n.js"></script>
+    <script src="theme.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo" aria-label="VocoSafe AI, home">
+                <img class="logo-badge on-light" src="images/logo-light.svg" alt="" width="38" height="38">
+                <img class="logo-badge on-dark" src="images/logo-dark.svg" alt="" width="38" height="38">
+                <span>VocoSafe&nbsp;AI</span>
+            </a>
+            <nav class="nav-main">
+                <a href="index.html" data-i18n="nav_home">Home</a>
+                <a href="windows.html" data-i18n="nav_windows_version">For Windows</a>
+                <a href="support.html" data-i18n="nav_support">Support</a>
+                <a href="privacy.html" data-i18n="nav_privacy">Privacy</a>
+            </nav>
+            <div class="nav-tools">
+                <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"></path>
+                    </svg>
+                </button>
+                <select class="lang-switcher" onchange="changeLang(this.value)" aria-label="Language">
+                    <option value="en">en English</option>
+                    <option value="ar">ar العربية</option>
+                    <option value="de">de Deutsch</option>
+                    <option value="es">es Español</option>
+                    <option value="fr">fr Français</option>
+                    <option value="hi">hi हिन्दी</option>
+                    <option value="id">id Bahasa Indonesia</option>
+                    <option value="it">it Italiano</option>
+                    <option value="jp">jp 日本語</option>
+                    <option value="ko">ko 한국어</option>
+                    <option value="nl">nl Nederlands</option>
+                    <option value="pl">pl Polski</option>
+                    <option value="pt">pt Português</option>
+                    <option value="ru">ru Русский</option>
+                    <option value="tr">tr Türkçe</option>
+                    <option value="uk">uk Українська</option>
+                    <option value="vi">vi Tiếng Việt</option>
+                    <option value="zh">zh 中文</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <section class="content-page">
+        <div class="container">
+            <span class="eyebrow" data-i18n="changelog_eyebrow">Release history</span>
+            <h1 data-i18n="changelog_title">Changelog</h1>
+            <p data-i18n="changelog_desc">Track the latest updates and improvements to VocoSafe&nbsp;AI.</p>
+
+            <!-- Release entries below are intentionally left English-only:
+                 granular technical history, low priority for translation. -->
+            <div class="release">
+                <div class="release-header">
+                    <h2>Version 1.2.19 (Build 228)</h2>
+                    <span class="date">August 17, 2026</span>
+                </div>
+                <div class="release-content">
+                    <h3>Purchases and AI Text Correction</h3>
+                    <ul>
+                        <li><strong>Purchases run in the background:</strong> the app stays fully responsive while the App&nbsp;Store completes a transaction. Windows still move, and the interface does not wait.</li>
+                        <li><strong>Redesigned purchase screen:</strong> it follows the app theme, is available in all 18 supported languages, and describes each step of the App&nbsp;Store sequence as it happens.</li>
+                        <li><strong>AI Text Correction favors your wording:</strong> it concentrates on punctuation and spelling rather than rewriting what you said.</li>
+                        <li><strong>AI Text Correction in Chinese, Japanese and Thai:</strong> languages written without spaces between words are now supported.</li>
+                        <li><strong>Voice Activation reports its state:</strong> it watches the detection engine and tells you what it is doing.</li>
+                        <li><strong>Performance and stability improvements.</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="release">
+                <div class="release-header">
+                    <h2>Version 1.2.7 (Build 216)</h2>
+                    <span class="date">August 8, 2026</span>
+                </div>
+                <div class="release-content">
+                    <h3>Files, Video and Hands-Free Recording</h3>
+                    <ul>
+                        <li><strong>Transcribe Several Files at Once:</strong> Pick a set of recordings and VocoSafe&nbsp;AI works through them one after another, showing which file it is on and letting you stop at any point.</li>
+                        <li><strong>Video and iPhone Voice Memos:</strong> M4A and AAC now open alongside WAV, MP3, FLAC and OGG, and the audio is pulled straight out of MP4, MOV, AVI and MKV. No converting first.</li>
+                        <li><strong>Save Transcriptions as .txt:</strong> Tick the box on the Files tab, choose a folder once, and every transcription is written there as its own text file. Off by default, and dictation is never written to disk.</li>
+                        <li><strong>Long Recordings Fixed:</strong> Interviews, lectures and meetings past ten minutes previously stopped partway through with an unclear message. They now transcribe end to end.</li>
+                        <li><strong>Global Shortcut:</strong> Optional Option-Shift-D starts and stops recording from any app, without bringing the window forward. No extra system permissions are needed.</li>
+                        <li><strong>Menu Bar Record Button:</strong> Optional one-click record button next to the VocoSafe&nbsp;AI icon, with the mode chosen from the menu.</li>
+                        <li><strong>Help Section:</strong> A built-in guide covering dictation, files, purchases and activation, translated into all 18 interface languages.</li>
+                        <li><strong>Rate the App:</strong> Available from the menu bar and the About screen.</li>
+                        <li><strong>Queued Start:</strong> Pressing record while a model is still loading now queues the recording instead of reporting that no model is selected.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="release">
+                <div class="release-header">
+                    <h2>Version 1.1.2 (Build 203)</h2>
+                    <span class="date">July 31, 2026</span>
+                </div>
+                <div class="release-content">
+                    <h3>Accuracy and Performance Update</h3>
+                    <ul>
+                        <li><strong>Fewer Invented Phrases:</strong> Reworked filtering catches the stock phrases speech models produce from silence, breathing and background noise, so they no longer land in your text.</li>
+                        <li><strong>Much Lower CPU Use:</strong> Background voice activation dropped from around 66% of a core to roughly 1%, which means a quieter fan and longer battery life.</li>
+                        <li><strong>Window Resizing:</strong> Fixed a case where the window could not be resized properly.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="release">
+                <div class="release-header">
+                    <h2>Version 1.1.1 (Build 193)</h2>
+                    <span class="date">July 14, 2026</span>
+                </div>
+                <div class="release-content">
+                    <h3>Pricing &amp; Convenience Update</h3>
+                    <ul>
+                        <li><strong>Local Pricing:</strong> Prices are now shown in your local currency and storefront.</li>
+                        <li><strong>Launch at Login:</strong> New option in Settings to automatically start VocoSafe&nbsp;AI when you log in.</li>
+                        <li><strong>Detailed Logging:</strong> New optional detailed logging mode to help diagnose issues faster when contacting support.</li>
+                        <li><strong>Stability:</strong> Minor bug fixes and improvements.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="release">
+                <div class="release-header">
+                    <h2>Version 1.1 (Build 180)</h2>
+                    <span class="date">May 21, 2026</span>
+                </div>
+                <div class="release-content">
+                    <h3>Initial Public Release</h3>
+                    <ul>
+                        <li><strong>Private On-Device AI:</strong> Complete offline speech-to-text processing for total privacy.</li>
+                        <li><strong>Smart AI Post-Processing:</strong> Integrated Qwen 2.5 model for real-time grammar and punctuation correction.</li>
+                        <li><strong>System-Wide Integration:</strong> Automatically types text directly into any active application.</li>
+                        <li><strong>Advanced VAD:</strong> Professional Voice Activity Detection to filter background noise and pauses.</li>
+                        <li><strong>Multilingual Support:</strong> Automatic detection and transcription for 18+ major languages.</li>
+                        <li><strong>Localized UI:</strong> Full interface translations for 18 languages.</li>
+                        <li><strong>Modern Design:</strong> Liquid Glass UI optimized for macOS 15+ and Apple Silicon.</li>
+                        <li><strong>Transparent Pricing:</strong> The trial call-to-action and fine print clearly show the post-trial price and billing period before you subscribe.</li>
+                        <li><strong>Smarter Purchase Flow:</strong> Users with an active subscription no longer see the purchase screen unnecessarily.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="release">
+                <div class="release-header">
+                    <h2>Version 1.0 (Build 108)</h2>
+                    <span class="date">April 17, 2026, TestFlight beta</span>
+                </div>
+                <div class="release-content">
+                    <h3>First Beta Build</h3>
+                    <p class="small-text" style="margin: 0 0 10px;">Kept here for the record. This build went to TestFlight testers only and was never released on the Mac App Store. It carried the core of what shipped a month later in 1.1: on-device transcription, the local grammar model, system-wide typing, voice activity detection and the 18 language interface.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-links">
+                    <a href="mac.html" data-i18n="nav_mac">For Mac</a>
+                    <a href="windows.html" data-i18n="nav_windows_version">For Windows</a>
+                    <a href="changelog.html" data-i18n="footer_changelog">Changelog</a>
+                    <a href="support.html" data-i18n="nav_support">Support</a>
+                    <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+                    <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" data-i18n="footer_terms">Terms of Use</a>
+                </div>
+                <select class="lang-switcher" onchange="changeLang(this.value)" aria-label="Language">
+                    <option value="en">en English</option>
+                    <option value="ar">ar العربية</option>
+                    <option value="de">de Deutsch</option>
+                    <option value="es">es Español</option>
+                    <option value="fr">fr Français</option>
+                    <option value="hi">hi हिन्दी</option>
+                    <option value="id">id Bahasa Indonesia</option>
+                    <option value="it">it Italiano</option>
+                    <option value="jp">jp 日本語</option>
+                    <option value="ko">ko 한국어</option>
+                    <option value="nl">nl Nederlands</option>
+                    <option value="pl">pl Polski</option>
+                    <option value="pt">pt Português</option>
+                    <option value="ru">ru Русский</option>
+                    <option value="tr">tr Türkçe</option>
+                    <option value="uk">uk Українська</option>
+                    <option value="vi">vi Tiếng Việt</option>
+                    <option value="zh">zh 中文</option>
+                </select>
+            </div>
+            <div class="legal">
+                <p data-i18n="footer_copyright">&copy; 2026 Oleksiy Krotov. VocoSafe&nbsp;AI&trade; is a trademark of Oleksiy Krotov. All rights reserved.</p>
+                <p style="margin-top: 0.5rem;">Apple, the Apple logo, and macOS are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc. Windows is a trademark of the Microsoft group of companies.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

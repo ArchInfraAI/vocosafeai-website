@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VocoSafe&nbsp;AI for Windows - Your words, your device, your privacy</title>
+    <meta name="description" content="Offline speech to text for Windows 11 on x64. Dictate into any app with no cloud and no telemetry. In development.">
+    <link rel="canonical" href="https://vocosafeai.com/windows.html">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" href="images/icon-180.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="VocoSafe AI">
+    <meta property="og:url" content="https://vocosafeai.com/windows.html">
+    <meta property="og:title" content="VocoSafe AI for Windows - offline dictation, coming soon">
+    <meta property="og:description" content="Offline speech to text for Windows 11 on x64. Dictate into any app with no cloud and no telemetry. In development.">
+    <meta property="og:image" content="https://vocosafeai.com/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VocoSafe AI for Windows - offline dictation, coming soon">
+    <meta name="twitter:description" content="Offline speech to text for Windows 11 on x64. Dictate into any app with no cloud and no telemetry. In development.">
+    <meta name="twitter:image" content="https://vocosafeai.com/images/og-image.png">
+    <script>
+        // Runs before the first paint. As a file this would apply after
+        // it, and every dark-mode visitor would get a white flash.
+        (function () {
+            var forced = /[?&]theme=(light|dark)/.exec(location.search);
+            if (forced) {
+                document.documentElement.setAttribute("data-theme", forced[1]);
+                return;
+            }
+            try {
+                var saved = localStorage.getItem("vs-theme");
+                if (saved === "light" || saved === "dark") {
+                    document.documentElement.setAttribute("data-theme", saved);
+                }
+            } catch (e) {
+                // Private browsing blocks storage. Fall through to the system preference.
+            }
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="i18n.js"></script>
+    <script src="theme.js" defer></script>
+</head>
+<body>
+    <div class="promo-banner">
+        <span data-i18n="promo_win_status">The Windows app is still in development. No release date yet.</span>
+    </div>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo" aria-label="VocoSafe AI, home">
+                <img class="logo-badge on-light" src="images/logo-light.svg" alt="" width="38" height="38">
+                <img class="logo-badge on-dark" src="images/logo-dark.svg" alt="" width="38" height="38">
+                <span>VocoSafe&nbsp;AI</span>
+            </a>
+            <nav class="nav-main">
+                <a href="index.html" data-i18n="nav_home">Home</a>
+                <a href="windows.html" class="active" data-i18n="nav_windows_version">For Windows</a>
+                <a href="support.html" data-i18n="nav_support">Support</a>
+                <a href="privacy.html" data-i18n="nav_privacy">Privacy</a>
+            </nav>
+            <div class="nav-tools">
+                <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"></path>
+                    </svg>
+                </button>
+                <select class="lang-switcher" onchange="changeLang(this.value)" aria-label="Language">
+                    <option value="en">en English</option>
+                    <option value="ar">ar العربية</option>
+                    <option value="de">de Deutsch</option>
+                    <option value="es">es Español</option>
+                    <option value="fr">fr Français</option>
+                    <option value="hi">hi हिन्दी</option>
+                    <option value="id">id Bahasa Indonesia</option>
+                    <option value="it">it Italiano</option>
+                    <option value="jp">jp 日本語</option>
+                    <option value="ko">ko 한국어</option>
+                    <option value="nl">nl Nederlands</option>
+                    <option value="pl">pl Polski</option>
+                    <option value="pt">pt Português</option>
+                    <option value="ru">ru Русский</option>
+                    <option value="tr">tr Türkçe</option>
+                    <option value="uk">uk Українська</option>
+                    <option value="vi">vi Tiếng Việt</option>
+                    <option value="zh">zh 中文</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <section class="content-page">
+        <div class="container">
+            <span class="eyebrow" data-i18n="win_eyebrow">Speech to text for Windows</span>
+            <h1 data-i18n="win_title">VocoSafe&nbsp;AI for Windows is in development.</h1>
+            <p data-i18n="win_status_lede">The on-device engine already runs: the same NVIDIA Parakeet and Whisper Turbo models used on Mac. The Windows app itself has not shipped yet, and no release date is being announced until it is close. This page will be the first place that changes.</p>
+            <!-- System requirements, restored. They were dropped in the rewrite,
+                 and they are the first thing someone checks before waiting for a
+                 release. Both keys already exist in all 18 languages. -->
+            <p class="hero-note" style="margin-top: 1.2rem;"><span data-i18n="win_req">Requires Windows 11 on x64.</span><br>
+            <span data-i18n="note_models">Note: One-time internet connection required only for AI Models download.</span></p>
+
+            <div class="features-list" style="margin-top: 2.5rem;">
+                <div class="feature">
+                    <h3 data-i18n="feat1_title">100% Private &amp; Offline</h3>
+                    <p data-i18n="win_feat1_desc">All processing happens locally on your machine. After a one-time download of your chosen AI Models, VocoSafe&nbsp;AI requires zero internet access. No data ever leaves your computer.</p>
+                </div>
+                <div class="feature">
+                    <h3 data-i18n="feat2_title">Smart AI Post-Processing</h3>
+                    <p data-i18n="win_feat2_desc">Integrated AI automatically fixes grammar, punctuation, and typos in real-time. Experience near-human transcription quality on your own Windows PC.</p>
+                </div>
+                <div class="feature">
+                    <h3 data-i18n="feat3_title">Seamless System Integration</h3>
+                    <p data-i18n="win_feat3_desc">VocoSafe&nbsp;AI types directly into any active application: Office, Slack, Discord, or your favorite IDE. It works wherever you type.</p>
+                </div>
+                <div class="feature">
+                    <h3 data-i18n="feat4_title">State-of-the-Art Accuracy</h3>
+                    <p data-i18n="win_feat4_desc">Powered by advanced local models like NVIDIA Parakeet and Whisper Turbo, running on the processor with no dedicated graphics card required.</p>
+                </div>
+                <div class="feature">
+                    <h3 data-i18n="feat5_title">Multilingual Support</h3>
+                    <p data-i18n="feat5_desc">Intelligent auto-detection for English, Spanish, Chinese, Hindi, Arabic, French, German, Japanese, Russian, and 90+ other languages.</p>
+                </div>
+                <div class="feature">
+                    <h3 data-i18n="feat6_title">Built for Professionals</h3>
+                    <p data-i18n="win_feat6_desc">Perfect for lawyers, doctors, and developers who demand the highest level of data security on their Windows workstations.</p>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 2.5rem;">
+                <h2 data-i18n="win_availability_title">Availability and pricing</h2>
+                <p data-i18n="win_availability_desc">There is nothing to buy yet. When the Windows app ships, pricing is expected to mirror the Mac app: a monthly plan, a yearly plan and a lifetime purchase, sold through the Microsoft Store. None of that is final until the app is actually available, so treat any number here as a guess rather than a quote.</p>
+            </div>
+
+            <div class="support-contact" style="margin-top: 1.5rem;">
+                <h2 data-i18n="win_follow_title">Stay informed</h2>
+                <p data-i18n="win_follow_desc">There is no mailing list yet. The <a href="changelog.html">changelog</a> lists every release as it happens, and it will carry the first Windows build the day it goes out.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-links">
+                    <a href="mac.html" data-i18n="nav_mac">For Mac</a>
+                    <a href="windows.html" data-i18n="nav_windows_version">For Windows</a>
+                    <a href="changelog.html" data-i18n="footer_changelog">Changelog</a>
+                    <a href="support.html" data-i18n="nav_support">Support</a>
+                    <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+                    <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" data-i18n="footer_terms">Terms of Use</a>
+                </div>
+                <select class="lang-switcher" onchange="changeLang(this.value)" aria-label="Language">
+                    <option value="en">en English</option>
+                    <option value="ar">ar العربية</option>
+                    <option value="de">de Deutsch</option>
+                    <option value="es">es Español</option>
+                    <option value="fr">fr Français</option>
+                    <option value="hi">hi हिन्दी</option>
+                    <option value="id">id Bahasa Indonesia</option>
+                    <option value="it">it Italiano</option>
+                    <option value="jp">jp 日本語</option>
+                    <option value="ko">ko 한국어</option>
+                    <option value="nl">nl Nederlands</option>
+                    <option value="pl">pl Polski</option>
+                    <option value="pt">pt Português</option>
+                    <option value="ru">ru Русский</option>
+                    <option value="tr">tr Türkçe</option>
+                    <option value="uk">uk Українська</option>
+                    <option value="vi">vi Tiếng Việt</option>
+                    <option value="zh">zh 中文</option>
+                </select>
+            </div>
+            <div class="legal">
+                <p data-i18n="footer_copyright">&copy; 2026 Oleksiy Krotov. VocoSafe&nbsp;AI&trade; is a trademark of Oleksiy Krotov. All rights reserved.</p>
+                <p style="margin-top: 0.5rem;">Apple, the Apple logo, and macOS are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc. Windows is a trademark of the Microsoft group of companies.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

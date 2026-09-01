@@ -1,0 +1,633 @@
+/* VocoSafe AI
+   ---------------------------------------------------------------
+   The idea the whole site is built on: the boundary of your machine.
+   Everything the product does happens inside it, and the design makes
+   that boundary a visible structure rather than a claim in a paragraph.
+   Hence the framed hero, the hairline rules that read as edges, and the
+   monospace labels borrowed from the app's own status line.
+
+   Color is declared once, as tokens, in both themes. No page may
+   hardcode #fff or #000: that is what made the previous stylesheet
+   impossible to give a light theme, since half its text was pinned
+   white regardless of background.
+*/
+
+/* ---------- Tokens: light is the base ---------- */
+:root {
+    --bg:          #faf9f6;   /* warm paper: pure white glares beside the app's own chrome */
+    --bg-sunk:     #f2f1ec;
+    --surface:     #ffffff;
+    --surface-2:   #f6f5f1;
+    --border:      #e4e2db;
+    --border-firm: #cecabf;
+    --text:        #16181d;
+    --text-dim:    #5c606a;
+    --text-faint:  #888d97;
+    --accent:      #2b3ad6;   /* ultramarine, deliberately not the system blue every Mac site reaches for */
+    --accent-text: #ffffff;
+    --accent-soft: rgba(43, 58, 214, 0.07);
+    --accent-line: rgba(43, 58, 214, 0.24);
+    --ok:          #17784a;   /* reserved for the offline status, never decorative */
+    --ok-soft:     rgba(23, 120, 74, 0.12);
+    --shadow:      0 1px 2px rgba(20, 22, 28, 0.04), 0 12px 32px rgba(20, 22, 28, 0.06);
+    --shadow-lift: 0 2px 4px rgba(20, 22, 28, 0.06), 0 24px 48px rgba(20, 22, 28, 0.10);
+
+    --font-sans: "Schibsted Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    --wrap: 1120px;
+    --radius: 14px;
+    --radius-lg: 22px;
+}
+
+/* Dark when the system asks for it, unless the visitor overrode it. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg:          #0c0d10;
+        --bg-sunk:     #08090b;
+        --surface:     #14161a;
+        --surface-2:   #1a1d22;
+        --border:      #262a31;
+        --border-firm: #383d46;
+        --text:        #edeef1;
+        --text-dim:    #9ba1ac;
+        --text-faint:  #71777f;
+        --accent:      #8093ff;
+        --accent-text: #0c0d10;
+        --accent-soft: rgba(128, 147, 255, 0.12);
+        --accent-line: rgba(128, 147, 255, 0.32);
+        --ok:          #46c98b;
+        --ok-soft:     rgba(70, 201, 139, 0.14);
+        --shadow:      0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.35);
+        --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.45), 0 24px 48px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* The switch wins over the system, in both directions. */
+:root[data-theme="dark"] {
+    --bg:          #0c0d10;
+    --bg-sunk:     #08090b;
+    --surface:     #14161a;
+    --surface-2:   #1a1d22;
+    --border:      #262a31;
+    --border-firm: #383d46;
+    --text:        #edeef1;
+    --text-dim:    #9ba1ac;
+    --text-faint:  #71777f;
+    --accent:      #8093ff;
+    --accent-text: #0c0d10;
+    --accent-soft: rgba(128, 147, 255, 0.12);
+    --accent-line: rgba(128, 147, 255, 0.32);
+    --ok:          #46c98b;
+    --ok-soft:     rgba(70, 201, 139, 0.14);
+    --shadow:      0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.35);
+    --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.45), 0 24px 48px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- Base ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+    color: var(--text);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.16;
+}
+h1 { font-size: clamp(2.3rem, 5vw, 3.7rem); letter-spacing: -0.035em; }
+h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); letter-spacing: -0.03em; }
+h3 { font-size: 1.15rem; }
+
+p { color: var(--text-dim); }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+}
+
+/* ---------- Utility ---------- */
+.container { max-width: var(--wrap); margin: 0 auto; padding: 0 2rem; }
+.center { text-align: center; }
+.small-text { font-size: 0.85rem; color: var(--text-faint); }
+
+/* Monospace on purpose: the same voice the app uses for its status
+   line, marking machine-reported fact as distinct from marketing prose. */
+.eyebrow {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+}
+
+/* ---------- Header ---------- */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: color-mix(in srgb, var(--bg) 86%, transparent);
+    backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--border);
+}
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    height: 62px;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    white-space: nowrap;
+}
+.logo:hover { text-decoration: none; }
+/* The pale badge sits on a pale page, so it needs an edge of its own or
+   it dissolves into the header. */
+.logo-badge { width: 38px; height: 38px; border-radius: 9px; display: block; border: 1px solid var(--border); }
+.logo .on-dark { display: none; }
+:root[data-theme="dark"] .logo .on-light { display: none; }
+:root[data-theme="dark"] .logo .on-dark { display: block; }
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .logo .on-light { display: none; }
+    :root:not([data-theme="light"]) .logo .on-dark { display: block; }
+}
+
+.nav-main { display: flex; align-items: center; gap: 1.6rem; }
+.nav-main a { color: var(--text-dim); font-size: 0.92rem; font-weight: 500; white-space: nowrap; }
+.nav-main a:hover { color: var(--text); text-decoration: none; }
+.nav-main a.active { color: var(--text); }
+
+.nav-tools { display: flex; align-items: center; gap: 0.6rem; }
+
+.lang-switcher {
+    font-family: var(--font-sans);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    border-radius: 8px;
+    padding: 5px 8px;
+    font-size: 0.82rem;
+    cursor: pointer;
+}
+.lang-switcher:hover { border-color: var(--border-firm); color: var(--text); }
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px; height: 34px;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text-dim);
+    cursor: pointer;
+    padding: 0;
+}
+.theme-toggle:hover { border-color: var(--border-firm); color: var(--text); }
+.theme-toggle svg { width: 17px; height: 17px; display: block; }
+/* Show the icon for the theme the click would switch *to*. */
+.theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
+    :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+}
+
+/* ---------- Promo banner ---------- */
+/* Используется на windows.html для статуса разработки. На index.html этой
+   полосой показывалась акция, снята 01.09.2026; стиль удалять нельзя, и не
+   только поэтому: полоса возвращается с каждой новой акцией.
+   Инструкция по возврату в docs/current/marketing/PROMO_BANNER_snippet.md */
+.promo-banner {
+    background: var(--accent-soft);
+    border-bottom: 1px solid var(--accent-line);
+    color: var(--text);
+    text-align: center;
+    padding: 9px 16px;
+    font-size: 0.86rem;
+    font-weight: 500;
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: 11px;
+    font-weight: 600;
+    font-size: 0.98rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.12s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+.btn-primary:hover, .btn-secondary:hover { text-decoration: none; transform: translateY(-1px); }
+.btn-primary { background: var(--accent); color: var(--accent-text); }
+.btn-primary:hover { background: color-mix(in srgb, var(--accent) 88%, var(--text)); }
+.btn-secondary { background: var(--surface); color: var(--text); border-color: var(--border-firm); }
+.btn-secondary:hover { background: var(--surface-2); }
+
+/* ---------- Sections ---------- */
+section { padding: 5rem 0; }
+.section-head { max-width: 640px; margin-bottom: 2.8rem; }
+.section-head h2 { margin: 0.6rem 0 0.9rem; }
+.section-head p { font-size: 1.05rem; }
+
+/* ---------- Hero: the signature ----------
+   The frame is the argument. Content sits inside a drawn boundary
+   labeled as the visitor's own machine, and the network label sits on
+   that boundary, switched off. It states the product's single claim in
+   the form the claim is about.
+*/
+.hero { padding: 4.5rem 0 3rem; }
+.hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 4rem; align-items: center; }
+.hero h1 { margin: 0.9rem 0 1.2rem; }
+/* The single sentence the whole product rests on, so it is set apart from
+   the supporting copy rather than buried inside it. */
+.hero .claim {
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: var(--text);
+    max-width: 38ch;
+    padding-left: 0.9rem;
+    border-left: 2px solid var(--accent);
+    margin-bottom: 1.1rem;
+}
+.hero .lede { font-size: 1.15rem; max-width: 38ch; }
+/* The price answer, and it has to read as an answer rather than as more
+   body copy: same weight as the lede, accent color, sitting directly above
+   the download button so it is read before the click, not after. */
+.hero-free {
+    margin-top: 1.4rem;
+    font-weight: 600;
+    color: var(--accent);
+    max-width: 42ch;
+}
+.hero-cta { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1.1rem 0 1.1rem; }
+.hero-note { font-size: 0.85rem; color: var(--text-faint); max-width: 44ch; }
+
+.boundary {
+    position: relative;
+    border: 1px solid var(--border-firm);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    padding: 2.4rem 2rem 2rem;
+    box-shadow: var(--shadow);
+}
+/* Labels straddling the frame edge, like callouts on a technical drawing. */
+.boundary-tag {
+    position: absolute;
+    top: -0.72rem;
+    left: 1.6rem;
+    background: var(--bg);
+    padding: 0 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+}
+.boundary-status {
+    position: absolute;
+    bottom: -0.72rem;
+    right: 1.6rem;
+    background: var(--bg);
+    padding: 0 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: var(--ok);
+}
+.boundary-status .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--ok);
+    box-shadow: 0 0 0 3px var(--ok-soft);
+}
+
+/* Heights come from hero-demo.js, one value per animation frame. The
+   transition smooths between frames so the bars glide instead of
+   stepping, which is the difference between a voice and a bar chart. */
+.wave { display: flex; align-items: flex-end; gap: 3px; height: 54px; margin-bottom: 1.5rem; }
+.wave span {
+    flex: 1;
+    background: var(--accent);
+    border-radius: 2px;
+    opacity: 0.85;
+    height: 7%;
+    min-height: 2px;
+    transition: height 90ms linear, opacity 200ms linear;
+}
+
+.transcript { font-size: 1.02rem; color: var(--text); line-height: 1.6; min-height: 7.5em; }
+.transcript .caret {
+    display: inline-block;
+    width: 2px; height: 1.05em;
+    background: var(--accent);
+    vertical-align: text-bottom;
+    margin-left: 2px;
+    animation: blink 1.1s steps(1) infinite;
+}
+@keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+
+.boundary-foot {
+    margin-top: 1.5rem;
+    padding-top: 1.1rem;
+    border-top: 1px dashed var(--border);
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--text-faint);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* ---------- Proof ---------- */
+.proof-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--surface);
+}
+.proof-item { padding: 2rem 1.8rem; border-right: 1px solid var(--border); }
+.proof-item:last-child { border-right: none; }
+.proof-item h3 { margin: 0.7rem 0 0.5rem; font-size: 1.02rem; }
+.proof-item p { font-size: 0.92rem; }
+.proof-num { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.08em; }
+@media (max-width: 860px) {
+    .proof-item { border-right: none; border-bottom: 1px solid var(--border); }
+    .proof-item:last-child { border-bottom: none; }
+}
+
+/* ---------- Demo ----------
+   Full width and unframed: the recording already contains a Mac bezel,
+   and wrapping it in a second frame is what made the app window inside
+   read at postage-stamp size. */
+.demo figure { margin: 0; }
+.demo video, .demo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+}
+.demo figcaption {
+    margin-top: 0.9rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-faint);
+    text-align: center;
+}
+
+/* ---------- Features ---------- */
+.features-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 2.4rem 3rem; }
+.feature { padding-top: 1.2rem; border-top: 1px solid var(--border); }
+.feature h3 { margin-bottom: 0.5rem; }
+.feature p { font-size: 0.95rem; }
+/* Marks the two features that cost money, so the free reader is not left
+   hunting for something that was never theirs. */
+.feature-tag {
+    margin-top: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+/* ---------- Cards ---------- */
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; }
+
+/* ---------- Pricing ---------- */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+    gap: 1.25rem;
+    align-items: stretch;
+}
+.plan {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.9rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+/* The free tier, above the paid grid and deliberately unlike it: a single
+   wide band rather than a fourth card, so it reads as the starting point
+   instead of as the cheapest of four plans. */
+.free-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem 2rem;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-line);
+    border-radius: var(--radius);
+    padding: 1.5rem 1.6rem;
+    margin-bottom: 1.25rem;
+}
+.free-strip h3 { font-size: 1.05rem; margin-bottom: 0.35rem; }
+.free-strip p { font-size: 0.92rem; margin: 0; max-width: 62ch; }
+.free-strip .btn-secondary { flex-shrink: 0; }
+.plan.featured { border-color: var(--accent); box-shadow: var(--shadow-lift); }
+.plan h3 { font-size: 1rem; font-weight: 600; color: var(--text-dim); }
+.plan .price { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.04em; color: var(--text); margin: 0.5rem 0 0.1rem; }
+.plan .price s { font-size: 1.25rem; font-weight: 500; color: var(--text-faint); margin-right: 0.4rem; }
+.plan .price .per { font-size: 0.95rem; font-weight: 500; color: var(--text-faint); }
+.plan .plan-desc { font-size: 0.9rem; margin: 0.6rem 0 1.4rem; }
+.plan .btn-primary, .plan .btn-secondary { margin-top: auto; width: 100%; }
+.plan-badge {
+    position: absolute;
+    top: -0.7rem;
+    left: 1.5rem;
+    background: var(--accent);
+    color: var(--accent-text);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+}
+
+/* ---------- Maker ---------- */
+.maker {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.6rem;
+    align-items: start;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+}
+.maker-mark { width: 72px; height: 72px; flex: none; }
+.maker-mark img { width: 72px; height: 72px; border-radius: 16px; display: block; border: 1px solid var(--border); }
+.maker-mark .on-dark { display: none; }
+:root[data-theme="dark"] .maker-mark .on-light { display: none; }
+:root[data-theme="dark"] .maker-mark .on-dark { display: block; }
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .maker-mark .on-light { display: none; }
+    :root:not([data-theme="light"]) .maker-mark .on-dark { display: block; }
+}
+.maker p { font-size: 0.95rem; }
+.maker p + p { margin-top: 0.8rem; }
+@media (max-width: 620px) { .maker { grid-template-columns: 1fr; } }
+
+/* ---------- Compare strip ---------- */
+.compare-strip { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.compare-strip a {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    padding: 0.55rem 0.95rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text-dim);
+    background: var(--surface);
+}
+.compare-strip a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+/* ---------- Platform cards ---------- */
+.platform-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1.25rem; }
+.platform-card {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.8rem;
+    color: inherit;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.platform-card:hover { border-color: var(--accent); transform: translateY(-2px); text-decoration: none; }
+.platform-card h3 { margin: 0.9rem 0 0.4rem; }
+.platform-card p { font-size: 0.92rem; margin-bottom: 0.9rem; }
+.platform-card .status { font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-faint); }
+.platform-card svg { width: 28px; height: 28px; display: block; fill: var(--text); }
+
+/* ---------- Content pages ---------- */
+.content-page { padding: 4rem 0 5rem; }
+.content-page h1 { margin-bottom: 0.6rem; }
+.content-page h2 { margin-top: 3rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+.content-page h3 { margin-top: 2rem; }
+.content-page p { margin-bottom: 1.2rem; }
+.content-page ul { margin: 0 0 1.4rem 1.4rem; color: var(--text-dim); }
+.content-page ul li { margin-bottom: 0.45rem; }
+
+.support-contact, .faq-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin-top: 2rem;
+}
+.email-box {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    padding: 1.2rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.faq-item { margin-top: 1.8rem; }
+.faq-item h3 { margin-top: 0; }
+
+/* ---------- Changelog ---------- */
+.release {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.8rem 2rem;
+    margin-top: 1.5rem;
+}
+.release-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.9rem;
+    margin-bottom: 1.2rem;
+}
+.release-header h2 { margin: 0; border-bottom: none; padding-bottom: 0; font-size: 1.45rem; }
+.release-header .date { font-family: var(--font-mono); color: var(--text-faint); font-size: 0.78rem; }
+.release-content h3 { margin-top: 0; font-size: 1rem; color: var(--accent); }
+.release-content ul { margin-bottom: 0; }
+.release-content ul li strong { color: var(--text); }
+
+/* ---------- Footer ---------- */
+footer {
+    border-top: 1px solid var(--border);
+    background: var(--bg-sunk);
+    padding: 3rem 0 2.5rem;
+    margin-top: 2rem;
+}
+.footer-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 2rem;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+.footer-links { display: flex; flex-wrap: wrap; gap: 1.2rem; }
+.footer-links a { color: var(--text-dim); font-size: 0.9rem; }
+.footer-links a:hover { color: var(--text); text-decoration: none; }
+footer .legal { margin-top: 1.5rem; font-size: 0.78rem; }
+footer .legal p { color: var(--text-faint); font-size: 0.78rem; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero .lede { max-width: none; }
+    section { padding: 4rem 0; }
+}
+@media (max-width: 700px) {
+    body { font-size: 16px; }
+    .container { padding: 0 1.25rem; }
+    header .container { height: auto; padding-top: 0.7rem; padding-bottom: 0.7rem; flex-wrap: wrap; }
+    .nav-main { order: 3; width: 100%; gap: 1.1rem; overflow-x: auto; padding-bottom: 0.2rem; }
+    .hero { padding: 2.5rem 0 2rem; }
+    .boundary { padding: 2rem 1.3rem 1.6rem; }
+    .plan .price { font-size: 2.2rem; }
+}

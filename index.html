@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VocoSafe&nbsp;AI - free offline dictation for Mac</title>
+    <meta name="description" content="Free dictation for macOS that runs entirely on your own Mac. Speak and the text appears in whatever app you are using. No time limit, no account, no telemetry, nothing uploaded.">
+    <link rel="canonical" href="https://vocosafeai.com/">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" href="images/icon-180.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="VocoSafe AI">
+    <meta property="og:url" content="https://vocosafeai.com/">
+    <meta property="og:title" content="VocoSafe AI - free offline dictation for Mac">
+    <meta property="og:description" content="Free dictation for macOS that runs entirely on your own Mac. Speak and the text appears in whatever app you are using. No time limit, no account, no telemetry, nothing uploaded.">
+    <meta property="og:image" content="https://vocosafeai.com/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VocoSafe AI - free offline dictation for Mac">
+    <meta name="twitter:description" content="Free dictation for macOS that runs entirely on your own Mac. Speak and the text appears in whatever app you are using. No time limit, no account, no telemetry, nothing uploaded.">
+    <meta name="twitter:image" content="https://vocosafeai.com/images/og-image.png">
+    <script>
+        // Runs before the first paint. As a file this would apply after
+        // it, and every dark-mode visitor would get a white flash.
+        (function () {
+            var forced = /[?&]theme=(light|dark)/.exec(location.search);
+            if (forced) {
+                document.documentElement.setAttribute("data-theme", forced[1]);
+                return;
+            }
+            try {
+                var saved = localStorage.getItem("vs-theme");
+                if (saved === "light" || saved === "dark") {
+                    document.documentElement.setAttribute("data-theme", saved);
+                }
+            } catch (e) {
+                // Private browsing blocks storage. Fall through to the system preference.
+            }
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="i18n.js"></script>
+    <script src="theme.js" defer></script>
+    <script src="hero-demo.js" defer></script>
+</head>
+<body>
+    <!-- Здесь была полоса акции, снята 01.09.2026 вместе с истечением скидки.
+         Как вернуть за одну правку, с готовой разметкой и списком мест:
+         /Users/startups/Desktop/AutoScribe/docs/current/marketing/PROMO_BANNER_snippet.md -->
+
+    <header>
+        <div class="container">
+            <!-- The app's real mark, the same file the app loads for its own
+                 window (assets/logo_dark.svg and logo_light.svg). Two files
+                 rather than one: the badge is a solid plate, so the black
+                 version would disappear into a dark page. -->
+            <a href="index.html" class="logo" aria-label="VocoSafe AI, home">
+                <img class="logo-badge on-light" src="images/logo-light.svg" alt="" width="38" height="38">
+                <img class="logo-badge on-dark" src="images/logo-dark.svg" alt="" width="38" height="38">
+                <!-- The badge carries the name too, but even at this size it
+                     reads as a shape first, so the name is set beside it. -->
+                <span>VocoSafe&nbsp;AI</span>
+            </a>
+            <nav class="nav-main">
+                <a href="#how" data-i18n="nav_how">How it works</a>
+                <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+                <a href="macwhisper-alternative.html" data-i18n="nav_compare">Compare</a>
+                <a href="support.html" data-i18n="nav_support">Support</a>
+                <a href="privacy.html" data-i18n="nav_privacy">Privacy</a>
+            </nav>
+            <div class="nav-tools">
+                <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"></path>
+                    </svg>
+                </button>
+                <select class="lang-switcher" onchange="changeLang(this.value)" aria-label="Language">
+                    <option value="en">en English</option>
+                    <option value="ar">ar العربية</option>
+                    <option value="de">de Deutsch</option>
+                    <option value="es">es Español</option>
+                    <option value="fr">fr Français</option>
+                    <option value="hi">hi हिन्दी</option>
+                    <option value="id">id Bahasa Indonesia</option>
+                    <option value="it">it Italiano</option>
+                    <option value="jp">jp 日本語</option>
+                    <option value="ko">ko 한국어</option>
+                    <option value="nl">nl Nederlands</option>
+                    <option value="pl">pl Polski</option>
+                    <option value="pt">pt Português</option>
+                    <option value="ru">ru Русский</option>
+                    <option value="tr">tr Türkçe</option>
+                    <option value="uk">uk Українська</option>
+                    <option value="vi">vi Tiếng Việt</option>
+                    <option value="zh">zh 中文</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <span class="eyebrow" data-i18n="hero_eyebrow">Free dictation for macOS</span>
+                    <h1 data-i18n="hero_title">Your voice never leaves your Mac.</h1>
+                    <p class="claim" data-i18n="hero_claim">Your audio and your text never leave this machine. Not while you dictate, not afterwards, not ever.</p>
+                    <p class="lede" data-i18n="hero_lede">Dictate into email, documents, chat or code, and the words land where your cursor already is. The model runs on your machine, not in someone's data center.</p>
+                    <!-- Above the buttons on purpose. Placed below them it fell
+                         past the fold on a laptop, which is where a visitor
+                         decides whether this costs money. -->
+                    <p class="hero-free" data-i18n="hero_free">Free to use, with no time limit and no account. Nothing to cancel.</p>
+                    <div class="hero-cta">
+                        <a href="https://apps.apple.com/us/app/vocosafe-ai/id6762440983" class="btn-primary" data-i18n="btn_download_mas">Download on the Mac App Store</a>
+                        <a href="#how" class="btn-secondary" data-i18n="btn_see_how">See how it works</a>
+                    </div>
+                    <p class="hero-note" data-i18n="hero_req">Requires Apple Silicon (M1 to M5) and macOS 15 or later. A connection is needed once, to download the AI model you pick.</p>
+                </div>
+
+                <!-- The signature: the claim drawn as the thing the claim is
+                     about. Everything sits inside a labeled boundary, and the
+                     network label on that boundary is switched off. -->
+                <div class="boundary">
+                    <span class="boundary-tag" data-i18n="boundary_tag">Your Mac</span>
+                    <div class="wave" data-wave aria-hidden="true"></div>
+                    <p class="transcript"><span data-transcript></span><span class="caret" aria-hidden="true"></span></p>
+                    <div class="boundary-foot">
+                        <span data-i18n="boundary_engine">on-device model</span>
+                        <span data-i18n="boundary_sent">no upload step</span>
+                    </div>
+                    <span class="boundary-status">
+                        <span class="dot" aria-hidden="true"></span>
+                        <span data-i18n="boundary_network">audio never leaves</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow" data-i18n="proof_eyebrow">Check it yourself</span>
+                <h2 data-i18n="proof_title">Privacy you can verify, not just read about.</h2>
+                <p data-i18n="proof_lede">Every dictation app says it respects your data. Here are three ways to test whether this one means it.</p>
+            </div>
+            <div class="proof-list">
+                <div class="proof-item">
+                    <span class="proof-num">01</span>
+                    <h3 data-i18n="proof1_title">Turn off Wi-Fi and keep dictating</h3>
+                    <p data-i18n="proof1_desc">Once the model you picked has downloaded, transcription never needs a connection again. Pull the plug mid-sentence and the words still arrive.</p>
+                </div>
+                <div class="proof-item">
+                    <span class="proof-num">02</span>
+                    <h3 data-i18n="proof2_title">Watch it with LuLu</h3>
+                    <p data-i18n="proof2_desc">Point a firewall at the app and you will see everything it ever asks the network for: the one-time model download, the App Store confirming your purchase, and the license check at launch, which is usually answered from the local cache. What you dictate is not on that list. The audio and the text stay on your Mac, always.</p>
+                </div>
+                <div class="proof-item">
+                    <span class="proof-num">03</span>
+                    <h3 data-i18n="proof3_title">No account, no telemetry</h3>
+                    <p data-i18n="proof3_desc">Nothing to sign up for and nothing to log in to. No analytics, no usage tracking, no crash reporting of your own. No exceptions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="demo">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow" data-i18n="demo_eyebrow">In use</span>
+                <h2 data-i18n="demo_title">Speak into the window you are already in.</h2>
+            </div>
+            <figure>
+                <video autoplay loop muted playsinline poster="images/app-screen.png">
+                    <source src="images/demo.mp4" type="video/mp4">
+                    <span data-i18n="video_fallback">Your browser does not support the video tag.</span>
+                </video>
+                <figcaption data-i18n="demo_caption">Recorded on an Apple Silicon Mac, unedited and at normal speed.</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow" data-i18n="features_eyebrow">What it does</span>
+                <h2 data-i18n="features_title">Dictation that behaves like typing.</h2>
+            </div>
+            <div class="features-list">
+                <div class="feature">
+                    <h3 data-i18n="feat_types_title">Types where you already work</h3>
+                    <p data-i18n="feat_types_desc">Mail, Pages, a code editor, a chat window. The text lands in whatever has focus, as though you had typed it there yourself.</p>
+                </div>
+                <!-- This one describes AI Processing, which is paid. Unlabeled
+                     it read as a free feature and a free user would have gone
+                     looking for it. -->
+                <div class="feature">
+                    <h3 data-i18n="feat_clean_title">Cleans up as you speak</h3>
+                    <p data-i18n="feat_clean_desc">Punctuation, capitals and the obvious slips are fixed while you talk, so you are not editing the transcript afterwards.</p>
+                    <p class="feature-tag" data-i18n="feat_tag_pro">Pro feature</p>
+                </div>
+                <div class="feature">
+                    <h3 data-i18n="feat_vad_title">Starts without touching a key</h3>
+                    <p data-i18n="feat_vad_desc">Say the first word and recording begins. Stop talking and it ends. Nothing to hold down, nothing to click, and it hears when you are done.</p>
+                    <p class="feature-tag" data-i18n="feat_tag_pro">Pro feature</p>
+                </div>
+                <div class="feature">
+                    <h3 data-i18n="feat_lang_title">Follows you between languages</h3>
+                    <p data-i18n="feat_lang_desc">Speech is auto-detected across more than 90 languages, and the app's own interface is available in 18.</p>
+                </div>
+                <div class="feature">
+                    <h3 data-i18n="feat_files_title">Transcribes recordings too</h3>
+                    <p data-i18n="feat_files_desc">Drop in an interview, a meeting recording or a video and get the text back, on the same machine, with no upload step. Several files in one go, worked through one after another.</p>
+                </div>
+                <div class="feature">
+                    <h3 data-i18n="feat_txt_title">Writes the text out as a file</h3>
+                    <p data-i18n="feat_txt_desc">Turn it on, pick a folder once, and every transcription is saved there as its own .txt, named after the recording it came from. Off until you ask for it, and dictation is never written to disk.</p>
+                </div>
+                <div class="feature">
+                    <h3 data-i18n="feat_models_title">Runs on the Neural Engine</h3>
+                    <p data-i18n="feat_models_desc">Local models including NVIDIA Parakeet and Whisper Turbo, compiled for Apple Silicon rather than streamed from a data center.</p>
+                </div>
+                <div class="feature">
+                    <h3 data-i18n="feat_conf_title">Made for confidential material</h3>
+                    <p data-i18n="feat_conf_desc">Legal drafts, clinical notes, unpublished reporting. Work that cannot go to a third-party server is the reason this app exists.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow" data-i18n="compare_eyebrow">Weighing it up</span>
+                <h2 data-i18n="compare_title">Comparisons with the other Mac dictation apps.</h2>
+                <p data-i18n="compare_lede">Written to be useful rather than flattering, including the cases where the other app is the better buy.</p>
+            </div>
+            <div class="compare-strip">
+                <a href="macwhisper-alternative.html">vs MacWhisper</a>
+                <a href="superwhisper-alternative.html">vs superwhisper</a>
+                <a href="voiceink-alternative.html">vs VoiceInk</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow" data-i18n="pricing_eyebrow">Free and Pro</span>
+                <h2 data-i18n="pricing_title">Free to use. Two features cost extra.</h2>
+                <p data-i18n="pricing_lede">Pro adds two things: recording that starts and stops when you speak, and grammar and punctuation fixed by a small model running on your Mac. Everything else is free and stays free.</p>
+            </div>
+            <!-- Deliberately not a fourth card in the grid. The container is
+                 capped at 1120px, so four 250px cards need 1060px of a 1056px
+                 track and always wrap to a stranded third row, orphaning the
+                 one card that carries the featured border. -->
+            <div class="free-strip">
+                <div>
+                    <h3 data-i18n="free_strip_title">Free, with no time limit</h3>
+                    <p data-i18n="free_strip_desc">Manual dictation with any local model, transcription of audio and video files, history and a basic spell check. No account, and this is not a trial.</p>
+                </div>
+                <a href="https://apps.apple.com/us/app/vocosafe-ai/id6762440983" class="btn-secondary" data-i18n="btn_download_free">Download on the App Store</a>
+            </div>
+            <div class="pricing-grid">
+                <div class="plan">
+                    <h3 data-i18n="plan_monthly_title">Pro Monthly</h3>
+                    <div class="price">$7.99<span class="per">/month</span></div>
+                    <p class="plan-desc" data-i18n="plan_monthly_desc">Hands free recording and automatic cleanup, for a single project or to try properly before committing.</p>
+                    <a href="https://apps.apple.com/us/app/vocosafe-ai/id6762440983" class="btn-secondary" data-i18n="btn_subscribe_mas">Subscribe on the App Store</a>
+                </div>
+                <div class="plan">
+                    <h3 data-i18n="plan_yearly_title">Pro Yearly</h3>
+                    <div class="price">$39.99<span class="per">/year</span></div>
+                    <p class="plan-desc" data-i18n="plan_yearly_desc">The same two features all year, at $3.33 a month, billed once.</p>
+                    <a href="https://apps.apple.com/us/app/vocosafe-ai/id6762440983" class="btn-secondary" data-i18n="btn_subscribe_mas">Subscribe on the App Store</a>
+                </div>
+                <!-- Акция закончилась 31.08.2026, цена откатилась сама через
+                     Temporary Price Change в ASC. Здесь она откатывается руками:
+                     сайт про истечение акции ничего не знает. -->
+                <div class="plan featured">
+                    <h3 data-i18n="plan_lifetime_title">Pro Lifetime</h3>
+                    <div class="price">$79.99<span class="per"> once</span></div>
+                    <p class="plan-desc" data-i18n="plan_lifetime_desc">Pay once and keep hands free recording and automatic cleanup, including the updates that follow.</p>
+                    <a href="https://apps.apple.com/us/app/vocosafe-ai/id6762440983" class="btn-primary" data-i18n="btn_buy_lifetime_mas">Buy Lifetime on the App Store</a>
+                </div>
+            </div>
+            <p class="small-text" style="margin-top: 1.5rem;" data-i18n="pricing_note">The free tier above has no trial and does not expire. Pro Monthly and Pro Yearly include a separate one-month free trial; Pro Lifetime has no trial, because the App Store does not offer trials on one-time purchases. Everything is bought through the Mac App Store, so canceling and refunds go through Apple.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="maker">
+                <div class="maker-mark" aria-hidden="true">
+                    <img class="on-light" src="images/logo-light.svg" alt="" width="72" height="72">
+                    <img class="on-dark" src="images/logo-dark.svg" alt="" width="72" height="72">
+                </div>
+                <div>
+                    <span class="eyebrow" data-i18n="maker_eyebrow">Who makes this</span>
+                    <h3 style="margin: 0.5rem 0 0.7rem;" data-i18n="maker_title">Built by one developer.</h3>
+                    <p data-i18n="maker_desc">VocoSafe&nbsp;AI is written and supported by Oleksiy Krotov, an independent developer. There is no team, no help desk and no ticket queue: a support request goes to the person who writes the code.</p>
+                    <p data-i18n="maker_trust">On the Mac, the app is distributed through the Mac App Store. Apple reviews every update for security before it reaches you, and payment is handled securely by Apple. Every version that has shipped is listed in the <a href="changelog.html">changelog</a>, with the date it went out.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="platform-row">
+                <a href="mac.html" class="platform-card">
+                    <svg viewBox="0 0 24 24" role="img" aria-label="macOS">
+                        <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.246-3.83-1.206.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/>
+                    </svg>
+                    <h3 data-i18n="platform_mac_h3">macOS</h3>
+                    <p data-i18n="platform_mac_p">Available now for Apple Silicon, through the Mac App Store.</p>
+                    <span class="status" data-i18n="platform_mac_status">Full details</span>
+                </a>
+                <a href="windows.html" class="platform-card">
+                    <svg viewBox="0 0 24 24" role="img" aria-label="Windows">
+                        <rect x="1" y="1" width="10" height="10"/><rect x="13" y="1" width="10" height="10"/>
+                        <rect x="1" y="13" width="10" height="10"/><rect x="13" y="13" width="10" height="10"/>
+                    </svg>
+                    <h3 data-i18n="platform_win_h3">Windows</h3>
+                    <p data-i18n="platform_win_p">In development. The engine runs, the release is not ready yet.</p>
+                    <span class="status" data-i18n="platform_win_status">Read the status</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-links">
+                    <a href="mac.html" data-i18n="nav_mac">For Mac</a>
+                    <a href="windows.html" data-i18n="nav_windows_version">For Windows</a>
+                    <a href="changelog.html" data-i18n="footer_changelog">Changelog</a>
+                    <a href="support.html" data-i18n="nav_support">Support</a>
+                    <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+                    <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" data-i18n="footer_terms">Terms of Use</a>
+                </div>
+                <select class="lang-switcher" onchange="changeLang(this.value)" aria-label="Language">
+                    <option value="en">en English</option>
+                    <option value="ar">ar العربية</option>
+                    <option value="de">de Deutsch</option>
+                    <option value="es">es Español</option>
+                    <option value="fr">fr Français</option>
+                    <option value="hi">hi हिन्दी</option>
+                    <option value="id">id Bahasa Indonesia</option>
+                    <option value="it">it Italiano</option>
+                    <option value="jp">jp 日本語</option>
+                    <option value="ko">ko 한국어</option>
+                    <option value="nl">nl Nederlands</option>
+                    <option value="pl">pl Polski</option>
+                    <option value="pt">pt Português</option>
+                    <option value="ru">ru Русский</option>
+                    <option value="tr">tr Türkçe</option>
+                    <option value="uk">uk Українська</option>
+                    <option value="vi">vi Tiếng Việt</option>
+                    <option value="zh">zh 中文</option>
+                </select>
+            </div>
+            <div class="legal">
+                <p data-i18n="footer_copyright">&copy; 2026 Oleksiy Krotov. VocoSafe&nbsp;AI&trade; is a trademark of Oleksiy Krotov. All rights reserved.</p>
+                <p style="margin-top: 0.5rem;">Apple, the Apple logo, and macOS are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc. Windows is a trademark of the Microsoft group of companies.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

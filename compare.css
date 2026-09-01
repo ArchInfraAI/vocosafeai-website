@@ -1,0 +1,110 @@
+/* Shared styling for the comparison pages.
+   Extracted from macwhisper-alternative.html once a second page needed it,
+   three copies of the same table CSS would drift apart within a month.
+
+   Every color here is a token from style.css. These pages carry no theme
+   toggle logic of their own, but they inherit both themes from the design
+   system, so nothing in this file may hardcode a color.
+*/
+
+.compare-hero { padding: 4rem 0 2rem; text-align: center; }
+.compare-hero h1 { font-size: 2.6rem; letter-spacing: -0.03em; }
+.compare-hero .lede { max-width: 680px; margin: 0 auto 1.5rem; font-size: 1.1rem; }
+/* The global reset zeroes every margin, and this wrapper had no rule of its
+   own, so the line under the button sat flush against it. The gap also lets a
+   second button be dropped in here without the two touching. */
+.cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    margin: 1.8rem 0 1.2rem;
+}
+
+.honest-note {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+}
+.honest-note p:last-child { margin-bottom: 0; }
+
+.table-wrap { overflow-x: auto; margin: 2rem 0; -webkit-overflow-scrolling: touch; }
+table.compare {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    min-width: 640px;
+}
+table.compare th, table.compare td {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+}
+table.compare thead th {
+    font-weight: 700;
+    color: var(--text);
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+}
+table.compare thead th.ours { color: var(--accent); }
+table.compare tbody th {
+    font-weight: 600;
+    color: var(--text);
+    width: 30%;
+}
+table.compare td { color: var(--text-dim); }
+table.compare td.ours {
+    color: var(--text);
+    background: var(--accent-soft);
+}
+table.compare tbody tr:hover td { background: var(--surface-2); }
+table.compare tbody tr:hover td.ours { background: var(--accent-soft); }
+.yes { color: var(--ok); font-weight: 600; }
+.no  { color: var(--text-faint); }
+
+/* min() caps the track floor at the container width. Without it a 380px
+   minimum pushes the whole page 22px wider than a 390px phone and the site
+   scrolls sideways. */
+.verdict-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+/* Four cards in a three-wide grid leave one stranded on its own row. */
+.verdict-grid.two-up { grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); }
+.verdict-grid .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+}
+.verdict-grid .card h3 { font-size: 1.05rem; margin-bottom: 0.6rem; }
+.verdict-grid .card p { margin-bottom: 0; font-size: 0.95rem; }
+.verdict-grid a { color: var(--accent); }
+
+section.compare-body { padding: 1rem 0 3rem; }
+section.compare-body h2 { font-size: 1.8rem; margin-top: 3rem; }
+section.compare-body h2:first-child { margin-top: 0; }
+/* Buttons are anchors too. Without the exclusion this rule paints the call to
+   action blue-on-blue and the label disappears entirely, which is exactly
+   what it did to the bottom button on every one of these pages. */
+section.compare-body a:not(.btn-primary):not(.btn-secondary) { color: var(--accent); }
+.cta-block {
+    text-align: center;
+    padding: 3rem 0;
+    border-top: 1px solid var(--border);
+    margin-top: 3rem;
+}
+/* Same reason as .cta-buttons: without these the paragraph above the button
+   and the button itself touch. */
+.cta-block h2 { margin-bottom: 0.7rem; }
+.cta-block p { max-width: 620px; margin: 0 auto 1.8rem; }
+.verified { font-size: 0.8rem; color: var(--text-dim); margin-top: 2rem; }
+
+.compare-nav { text-align: center; margin: 2.5rem 0 0; font-size: 0.9rem; }
+.compare-nav a { color: var(--accent); margin: 0 0.6rem; }

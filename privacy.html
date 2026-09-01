@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - VocoSafe&nbsp;AI</title>
+    <meta name="description" content="VocoSafe AI collects no personal data. All speech processing happens on your device and your voice never leaves it. Read the full policy.">
+    <link rel="canonical" href="https://vocosafeai.com/privacy.html">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" href="images/icon-180.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="VocoSafe AI">
+    <meta property="og:url" content="https://vocosafeai.com/privacy.html">
+    <meta property="og:title" content="Privacy Policy - VocoSafe AI">
+    <meta property="og:description" content="VocoSafe AI collects no personal data. All speech processing happens on your device and your voice never leaves it. Read the full policy.">
+    <meta property="og:image" content="https://vocosafeai.com/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Privacy Policy - VocoSafe AI">
+    <meta name="twitter:description" content="VocoSafe AI collects no personal data. All speech processing happens on your device and your voice never leaves it. Read the full policy.">
+    <meta name="twitter:image" content="https://vocosafeai.com/images/og-image.png">
+    <script>
+        // Runs before the first paint. As a file this would apply after
+        // it, and every dark-mode visitor would get a white flash.
+        (function () {
+            var forced = /[?&]theme=(light|dark)/.exec(location.search);
+            if (forced) {
+                document.documentElement.setAttribute("data-theme", forced[1]);
+                return;
+            }
+            try {
+                var saved = localStorage.getItem("vs-theme");
+                if (saved === "light" || saved === "dark") {
+                    document.documentElement.setAttribute("data-theme", saved);
+                }
+            } catch (e) {
+                // Private browsing blocks storage. Fall through to the system preference.
+            }
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="i18n.js"></script>
+    <script src="theme.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo" aria-label="VocoSafe AI, home">
+                <img class="logo-badge on-light" src="images/logo-light.svg" alt="" width="38" height="38">
+                <img class="logo-badge on-dark" src="images/logo-dark.svg" alt="" width="38" height="38">
+                <span>VocoSafe&nbsp;AI</span>
+            </a>
+            <nav class="nav-main">
+                <a href="index.html" data-i18n="nav_home">Home</a>
+                <a href="windows.html" data-i18n="nav_windows_version">For Windows</a>
+                <a href="support.html" data-i18n="nav_support">Support</a>
+                <a href="privacy.html" class="active" data-i18n="nav_privacy">Privacy</a>
+            </nav>
+            <div class="nav-tools">
+                <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"></path>
+                    </svg>
+                </button>
+                <select class="lang-switcher" onchange="changeLang(this.value)" aria-label="Language">
+                    <option value="en">en English</option>
+                    <option value="ar">ar العربية</option>
+                    <option value="de">de Deutsch</option>
+                    <option value="es">es Español</option>
+                    <option value="fr">fr Français</option>
+                    <option value="hi">hi हिन्दी</option>
+                    <option value="id">id Bahasa Indonesia</option>
+                    <option value="it">it Italiano</option>
+                    <option value="jp">jp 日本語</option>
+                    <option value="ko">ko 한국어</option>
+                    <option value="nl">nl Nederlands</option>
+                    <option value="pl">pl Polski</option>
+                    <option value="pt">pt Português</option>
+                    <option value="ru">ru Русский</option>
+                    <option value="tr">tr Türkçe</option>
+                    <option value="uk">uk Українська</option>
+                    <option value="vi">vi Tiếng Việt</option>
+                    <option value="zh">zh 中文</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- Legal document, intentionally left English-only: see i18n.js header comment. -->
+    <section class="content-page">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p class="small-text">Effective Date: April 16, 2026</p>
+
+            <h2>The Zero-Data Policy</h2>
+            <p>Your privacy is the core principle behind VocoSafe&nbsp;AI. This application was built with a <strong>Zero-Data Architecture</strong>. This means it does not collect, store, or transmit your voice data.</p>
+
+            <h3>1. Local Processing (On-Device)</h3>
+            <p>VocoSafe&nbsp;AI processes all audio recordings and speech transcriptions locally on your Mac using its built-in Apple Silicon processor. <strong>Your voice data never leaves your device.</strong> Your audio and text are never sent to any cloud servers for processing.</p>
+
+            <h3>2. What Information Is Collected</h3>
+            <p>Absolutely no personal data is collected from the app's core functionality. VocoSafe&nbsp;AI does not track what you say, what you type, or when you use the application.</p>
+            <p>The only time data is exchanged over the internet is:</p>
+            <ul>
+                <li>When you manually download new AI models from within the app (connecting directly to HuggingFace repositories).</li>
+                <li>When verifying your subscription or lifetime purchase via the Apple App Store framework (StoreKit). This is handled entirely by Apple; your payment details are never seen or stored by VocoSafe&nbsp;AI.</li>
+            </ul>
+
+            <h3>3. Analytics and Tracking</h3>
+            <p>VocoSafe&nbsp;AI does not use any third-party analytics, crash reporters (like Firebase or Crashlytics), or marketing trackers inside the macOS application. Your usage remains 100% anonymous. If you choose to share crash data or usage statistics to help improve the app, this is strictly opt-in and handled securely through Apple's official App Store analytics.</p>
+
+            <h3>4. Contact Support</h3>
+            <p>If you have any questions or encounter issues, please use the <a href="https://forms.gle/r69NssCXCE6QWtgg8" target="_blank">official support form</a>. The information you provide (such as your email and error logs) is used only to assist you with your issue.</p>
+
+            <h3>5. Changes to This Policy</h3>
+            <p>If this privacy policy ever changes, this page will be updated. The commitment to 100% on-device processing and zero data collection will never change.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-links">
+                    <a href="mac.html" data-i18n="nav_mac">For Mac</a>
+                    <a href="windows.html" data-i18n="nav_windows_version">For Windows</a>
+                    <a href="changelog.html" data-i18n="footer_changelog">Changelog</a>
+                    <a href="support.html" data-i18n="nav_support">Support</a>
+                    <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+                    <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" data-i18n="footer_terms">Terms of Use</a>
+                </div>
+                <select class="lang-switcher" onchange="changeLang(this.value)" aria-label="Language">
+                    <option value="en">en English</option>
+                    <option value="ar">ar العربية</option>
+                    <option value="de">de Deutsch</option>
+                    <option value="es">es Español</option>
+                    <option value="fr">fr Français</option>
+                    <option value="hi">hi हिन्दी</option>
+                    <option value="id">id Bahasa Indonesia</option>
+                    <option value="it">it Italiano</option>
+                    <option value="jp">jp 日本語</option>
+                    <option value="ko">ko 한국어</option>
+                    <option value="nl">nl Nederlands</option>
+                    <option value="pl">pl Polski</option>
+                    <option value="pt">pt Português</option>
+                    <option value="ru">ru Русский</option>
+                    <option value="tr">tr Türkçe</option>
+                    <option value="uk">uk Українська</option>
+                    <option value="vi">vi Tiếng Việt</option>
+                    <option value="zh">zh 中文</option>
+                </select>
+            </div>
+            <div class="legal">
+                <p data-i18n="footer_copyright">&copy; 2026 Oleksiy Krotov. VocoSafe&nbsp;AI&trade; is a trademark of Oleksiy Krotov. All rights reserved.</p>
+                <p style="margin-top: 0.5rem;">Apple, the Apple logo, and macOS are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc. Windows is a trademark of the Microsoft group of companies.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+        <rect x="0" y="0" width="1000" height="1000" rx="220" fill="#ffffff" />
+        
+        <g transform="translate(500, 500) scale(0.85) translate(-500, -500)">
+            <text x="500" y="420" fill="#222222" font-family="'Inter', 'SF Pro Display', sans-serif" font-size="130" font-weight="bold" text-anchor="middle" letter-spacing="-2">VocoSafe AI</text>
+            <g stroke="#222222" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(145, 580) scale(5.5)">
+                <g transform="translate(0,0)">
+                    <path d="M2 10v3" />
+                    <path d="M6 6v11" />
+                    <path d="M10 3v18" />
+                    <path d="M14 8v7" />
+                    <path d="M18 5v13" />
+                    <path d="M22 10v3" />
+                </g>
+                <g transform="translate(35,0)">
+                    <path d="m11 7.601-5.994 8.19a1 1 0 0 0 .1 1.298l.817.818a1 1 0 0 0 1.314.087L15.09 12" />
+                    <path d="M16.5 21.174C15.5 20.5 14.372 20 13 20c-2.058 0-3.928 2.356-6 2-2.072-.356-2.775-3.369-1.5-4.5" />
+                    <circle cx="16" cy="7" r="5" />
+                </g>
+                <g transform="translate(70,0)">
+                    <path d="M12 20v2" />
+                    <path d="M12 2v2" />
+                    <path d="M17 20v2" />
+                    <path d="M17 2v2" />
+                    <path d="M2 12h2" />
+                    <path d="M2 17h2" />
+                    <path d="M2 7h2" />
+                    <path d="M20 12h2" />
+                    <path d="M20 17h2" />
+                    <path d="M20 7h2" />
+                    <path d="M7 20v2" />
+                    <path d="M7 2v2" />
+                    <rect x="4" y="4" width="16" height="16" rx="2" />
+                    <rect x="8" y="8" width="8" height="8" rx="1" />
+                </g>
+                <g transform="translate(105,0)">
+                    <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" />
+                    <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+                    <path d="M10 9H8" />
+                    <path d="M16 13H8" />
+                    <path d="M16 17H8" />
+                </g>
+            </g>
+        </g>
+
+    </svg>
