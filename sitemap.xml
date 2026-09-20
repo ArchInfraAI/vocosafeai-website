@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mac.html is deliberately absent: it is now a redirect to the root and
+     carries noindex, so listing it would send crawlers to a page that
+     tells them not to index it. terms.html is absent for the same reason. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://vocosafeai.com/</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://vocosafeai.com/macwhisper-alternative.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vocosafeai.com/superwhisper-alternative.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vocosafeai.com/voiceink-alternative.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vocosafeai.com/support.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vocosafeai.com/changelog.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vocosafeai.com/windows.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://vocosafeai.com/privacy.html</loc>
+    <lastmod>2026-08-07</lastmod>
+    <priority>0.3</priority>
+  </url>
+</urlset>
